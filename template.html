@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>$#title#$</title>
+        <meta charset="utf-8"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"/> 
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="/main.css"/>
+    </head>
+    <body>
+        <!--
+        <nav>
+            <menu-item>
+                <input type='checkbox' id='file-checker' class='menu-checker'/>
+                <label id='file-label' for='file-checker' class='menu-label'>Dosya</label>
+                <menu>
+                    <menu-option>
+                        <a href='/'>Ana Sayfa</a> 
+                    </menu-option>
+                    <menu-option>
+                        <a href='/posts'>Gönderiler</a>
+                    </menu-option>
+                </menu>
+            </menu-item>
+            <menu-item>
+                <input type='checkbox' id='apps-checker' class='menu-checker'/>
+                <label id='apps-label' for='apps-checker' class='menu-label'>Uygulamalar</label>
+                <menu>
+                    <menu-option has-seperator>
+                        <a href='/apps/webgl-raytracer'>WebGL Işın İzleyici</a>
+                    </menu-option>
+                    <menu-option>
+                        <a href='/apps/rpl-calculator'>Hesap Makinesi</a>
+                    </menu-option>
+                </menu>
+            </menu-item>
+        </nav>
+        -->
+        <div id='panels'>
+            <div id='posts'>
+            </div>
+            <div id='page'>
+                <div id="content">
+                    <h1>$#title#$</h1>
+                    <hr/>
+                    $#content#$
+                </div>
+                <hr/>
+                <footer>
+                    $#date#$
+                </footer>
+                <br/>
+            </div>
+            <div id='labels'>
+                <post-list>
+                <h2>Gönderiler</h2>
+                <a href='/'>Ana Sayfa</a>
+                $#posts#$
+                </post-list>
+                <label-list>
+                <h2>Etiketler</h2>
+                </label-list>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Cargo run",
+			"type": "shell",
+			"command": "cargo",
+			"problemMatcher": ["$rustc"],
+			"args": [
+				"run",
+				"2023/12/merhaba",
+				"site/posts/2023/12/merhaba",
+				"../"
+			],
+			"options": {
+				"cwd": "./poster"
+			},
+			"presentation": {
+            "echo": true,
+            "reveal": "always",
+            "focus": false,
+            "showReuseMessage": false,
+            "clear": true,
+         },
+		}
+	]
+}
