@@ -1,4 +1,4 @@
-<!--- Aşırı uzun bir başlık yapayım da sığmasın; giriş, örnek -->
+<!--- Aşırı uzun bir başlık yapayım da sığmasın; Giriş, Örnek -->
 
 Merhaba arkadaşlar bugün sizlerle birlikte Minecraft oynamayacağız.
 

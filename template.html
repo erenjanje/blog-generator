@@ -3,11 +3,7 @@
     <head>
         <title>$#title#$</title>
         <meta charset="utf-8"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"/> 
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="/pandoc.css"/>
         <link rel="stylesheet" href="/main.css"/>
     </head>
     <body>
@@ -40,8 +36,6 @@
         </nav>
         -->
         <div id='panels'>
-            <div id='posts'>
-            </div>
             <div id='page'>
                 <div id="content">
                     <h1>$#title#$</h1>
@@ -57,11 +51,12 @@
             <div id='labels'>
                 <post-list>
                 <h2>Gönderiler</h2>
-                <a href='/'>Ana Sayfa</a>
+                <a href='/' class="sidebar-link">Ana Sayfa</a>
                 $#posts#$
                 </post-list>
                 <label-list>
                 <h2>Etiketler</h2>
+                $#tags#$
                 </label-list>
             </div>
         </div>

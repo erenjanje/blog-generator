@@ -24,6 +24,6 @@ test:
 .PHONY: test
 
 $(SITEDIR)/%.html: template.html post.py %.$(POSTEXT) post-index.csv
+	@python post.py $(if $(TITLE),--title $(TITLE),) $(word 3, $^) $@
 	@echo COMPILE $(word 3, $^)
-	python post.py $(if $(TITLE),--title $(TITLE),) $(word 3, $^) $@
 
