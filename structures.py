@@ -111,9 +111,9 @@ class TagTree:
 		tags.sort(key=locale.strxfrm)
 		ret = []
 		for tag in tags:
-			ret.append(f'<details><summary>{tag}</summary><sidebar-link-container>')
+			ret.append(f'<details><summary>({len(self.tree[tag])}) {tag}</summary><sidebar-link-container>')
 			for (file, title) in self.tree[tag]:
-				ret.append(f'<a href="/{'/'.join(Path(file).parts[:-1])}" class="sidebar-link">{title}</a>')
+				ret.append(f'<a href="/{'/'.join(Path(file).parts[:-1])}" class="sidebar-link">- {title}</a>')
 			ret.append('</sidebar-link-container></details>\n')
 		return ''.join(ret)
 

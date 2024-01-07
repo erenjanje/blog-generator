@@ -10,7 +10,7 @@ INDEX_FILE = Path('post-index.csv')
 def create_post_html_name(year: str, month: str, post_tree: list[tuple[str,str]]) -> str:
 	ret = []
 	for (name, title) in post_tree:
-		ret.append(f'<a href="/posts/{year}/{month}/{name}" class="sidebar-link">{title}</a>')
+		ret.append(f'<a href="/posts/{year}/{month}/{name}" class="sidebar-link">- {title}</a>')
 	return '<br/>\n'.join(ret)
 
 def create_post_html_month(year: str, post_tree: list[tuple[str, list[tuple[str,str]]]], post_time: tuple[str,str]) -> str:
@@ -20,7 +20,9 @@ def create_post_html_month(year: str, post_tree: list[tuple[str, list[tuple[str,
 			f'''
 			<details {'open="open"' if post_time[1] == month else ''}>
 				<summary>{month}</summary>
-				{create_post_html_name(year, month, tree)}
+					<sidebar-link-container>
+					{create_post_html_name(year, month, tree)}
+					</sidebar-link-container>
 			</details>
 			'''
 		)
