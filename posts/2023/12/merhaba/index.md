@@ -1,4 +1,4 @@
-<!--- Aşırı uzun bir başlık yapayım da sığmasın; Giriş, Örnek -->
+<!-- Aşırı uzun bir başlık yapayım da sığmasın; Giriş, Örnek -->
 
 Merhaba arkadaşlar bugün sizlerle birlikte Minecraft oynamayacağız.
 
@@ -21,6 +21,12 @@ Aha [bu da](https://example.com) bir link.
 Hem **kalın** hem _ince_ yazmak güzel.
 
 hah.
+
+Aha bu da bir formül
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla pellentesque dignissim enim sit. Ullamcorper dignissim cras tincidunt lobortis feugiat. Enim ut sem viverra aliquet eget. Consequat mauris nunc congue nisi vitae suscipit. Parturient montes nascetur ridiculus mus mauris vitae. Turpis cursus in hac habitasse. Velit ut tortor pretium viverra suspendisse potenti. Sagittis vitae et leo duis ut diam. Dui ut ornare lectus sit amet est. Nec dui nunc mattis enim ut tellus. Gravida rutrum quisque non tellus orci ac. Ac turpis egestas maecenas pharetra. Suspendisse ultrices gravida dictum fusce ut.
 

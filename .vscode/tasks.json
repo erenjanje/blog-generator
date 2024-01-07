@@ -5,7 +5,9 @@
 			"label": "Cargo run",
 			"type": "shell",
 			"command": "cargo",
-			"problemMatcher": ["$rustc"],
+			"problemMatcher": [
+				"$rustc"
+			],
 			"args": [
 				"run",
 				"2023/12/merhaba",
@@ -16,12 +18,28 @@
 				"cwd": "./poster"
 			},
 			"presentation": {
-            "echo": true,
-            "reveal": "always",
-            "focus": false,
-            "showReuseMessage": false,
-            "clear": true,
-         },
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"showReuseMessage": false,
+				"clear": true
+			}
+		},
+		{
+			"label": "make",
+			"type": "shell",
+			"command": "make",
+			"args": [
+				"-B"
+			],
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"showReuseMessage": false,
+				"clear": true
+			},
+			"problemMatcher": []
 		}
 	]
 }

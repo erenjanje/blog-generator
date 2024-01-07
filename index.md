@@ -1,4 +1,4 @@
-<!-- Ana Sayfa -->
+<!-- Ana Sayfa; hah -->
 
 Blogumsu kişisel ağ sayfama hoşgeldiniz!
 

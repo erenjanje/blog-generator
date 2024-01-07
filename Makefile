@@ -3,11 +3,11 @@ rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 POSTDIR=posts
 SITEDIR=site
 POSTEXT=md
-TITLE=
 COMMIT=
 
 POSTS=$(call rwildcard,,*.$(POSTEXT))
 OUTS=$(POSTS:%.$(POSTEXT)=$(SITEDIR)/%.html)
+INDICES=$(POSTS:%index.$(POSTEXT)=%attributes.index)
 
 build: $(OUTS)
 .PHONY: build
@@ -21,9 +21,23 @@ upload: build
 test:
 	@echo $(POSTS)
 	@echo $(STYLEOUT)
+	@echo $(CFILES)
+	@echo $(INDICES)
 .PHONY: test
 
-$(SITEDIR)/%.html: template.html post.py %.$(POSTEXT) post-index.csv
-	@python post.py $(if $(TITLE),--title $(TITLE),) $(word 3, $^) $@
-	@echo COMPILE $(word 3, $^)
+post-index.csv: $(INDICES) merge.py structures.py
+	@python merge.py $(INDICES)
+	@echo MERGE
+
+%attributes.index: %index.$(POSTEXT) index.py structures.py
+	@python index.py $< $@
+	@echo INDEX $<
+
+attributes.index: index.$(POSTEXT) index.py structures.py
+	@python index.py $< $@
+	@echo INDEX $<
+
+$(SITEDIR)/%.html: %.$(POSTEXT) post-index.csv template.html post.py structures.py
+	@python post.py $< $@
+	@echo COMPILE $<
 
