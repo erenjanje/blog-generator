@@ -61,7 +61,7 @@ def get_template() -> str:
 		template = f.read()
 	return template
 
-def fill_template(template: str, creation_date: str, date: struct_time, content: str, title: str, sidebar: str, tags: TagTree) -> str:
+def fill_template(template: str, creation_date: str, date: struct_time, content: str, title: str, sidebar: str, tags: TagTree, ourtags: list[str]) -> str:
 	datestr = '<p>Oluşturulma Zamanı<br/>' + \
 		creation_date.replace('\\', '<br/>') + \
 		'</p>' + \
@@ -71,7 +71,8 @@ def fill_template(template: str, creation_date: str, date: struct_time, content:
 			.replace('$#title#$', title) \
 			.replace('$#date#$', datestr) \
 			.replace('$#posts#$', sidebar) \
-			.replace('$#tags#$', tags.html())
+			.replace('$#tags#$', tags.html()) \
+			.replace('$#taglist#$', '<br/>'.join(map(lambda t: '- ' + t, ourtags)))
 
 def get_post_time(file: Path) -> Optional[tuple[str,str]]:
 	if file.parts[0] != 'posts':
@@ -96,7 +97,7 @@ def main(args: Arguments):
 	tag_tree = TagTree(post_index)
 	content = get_content(args.file)
 	template = get_template()
-	result = fill_template(template, creation_date, date, content, post_attributes.title, post_sidebar, tag_tree)
+	result = fill_template(template, creation_date, date, content, post_attributes.title, post_sidebar, tag_tree, post_attributes.tags)
 	
 	out = args.outf
 	out.parent.mkdir(parents=True, exist_ok=True)
