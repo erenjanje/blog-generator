@@ -71,7 +71,7 @@ def fill_template(template: str, creation_date: str, date: struct_time, content:
 			.replace('$#title#$', title) \
 			.replace('$#date#$', datestr) \
 			.replace('$#posts#$', sidebar) \
-			.replace('$#tags#$', tags.html()) \
+			.replace('$#tags#$', tags.html(ourtags)) \
 			.replace('$#taglist#$', '<br/>'.join(map(lambda t: '- ' + t, ourtags)))
 
 def get_post_time(file: Path) -> Optional[tuple[str,str]]:

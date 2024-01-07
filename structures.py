@@ -106,12 +106,13 @@ class TagTree:
 				self.tree.setdefault(tag, []).append((file, title))
 	def __repr__(self) -> str:
 		return f'TagTree(tree={repr(self.tree)})'
-	def html(self) -> str:
+	def html(self, ourtags: list[str]) -> str:
+		current_tags: set[str] = set(ourtags)
 		tags = list(filter(lambda t: t != '', self.tree.keys()))
 		tags.sort(key=locale.strxfrm)
 		ret = []
 		for tag in tags:
-			ret.append(f'<details><summary>({len(self.tree[tag])}) {tag}</summary><sidebar-link-container>')
+			ret.append(f'<details><summary class="{"current-tag" if tag in current_tags else ""}">({len(self.tree[tag])}) {tag}</summary><sidebar-link-container>')
 			for (file, title) in self.tree[tag]:
 				ret.append(f'<a href="/{'/'.join(Path(file).parts[:-1])}" class="sidebar-link">- {title}</a>')
 			ret.append('</sidebar-link-container></details>\n')
