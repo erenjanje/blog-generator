@@ -62,17 +62,17 @@ def get_template() -> str:
 	return template
 
 def fill_template(template: str, creation_date: str, date: struct_time, content: str, title: str, sidebar: str, tags: TagTree, ourtags: list[str]) -> str:
-	datestr = '<p>Oluşturulma Zamanı<br/>' + \
+	datestr = '<div class="time-container"><h3>Oluşturulma Zamanı</h3><p>' + \
 		creation_date.replace('\\', '<br/>') + \
-		'</p>' + \
-		strftime(r'<p>Değiştirilme Zamanı<br/>%Y-%m-%d<br/>%H:%M:%S<br/>UTC%z</p>', date)
+		'</p></div>' + \
+		strftime(r'<div class="time-container"><h3>Değiştirilme Zamanı</h3><p>%Y-%m-%d<br/>%H:%M:%S<br/>UTC%z</p></div>', date)
 	return template \
 			.replace('$#content#$', content) \
 			.replace('$#title#$', title) \
 			.replace('$#date#$', datestr) \
 			.replace('$#posts#$', sidebar) \
 			.replace('$#tags#$', tags.html(ourtags)) \
-			.replace('$#taglist#$', '<br/>'.join(map(lambda t: '- ' + t, ourtags)))
+			.replace('$#taglist#$', '<h3>Etiketler</h3>' + '<br/>\n'.join(map(lambda t: '- ' + t, ourtags)))
 
 def get_post_time(file: Path) -> Optional[tuple[str,str]]:
 	if file.parts[0] != 'posts':
