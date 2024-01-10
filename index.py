@@ -20,11 +20,11 @@ def index(args: Arguments):
 		)
 		changed = True
 	else:
-		index[idx].title = attributes.title
-		index[idx].tags = attributes.tags
 		changed = (index[idx].title != attributes.title) or (
 			index[idx].tags != attributes.tags
 		)
+		index[idx].title = attributes.title
+		index[idx].tags = attributes.tags
 	if changed:
 		index.save()
 
