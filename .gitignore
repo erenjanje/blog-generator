@@ -2,4 +2,3 @@ site/
 posts/
 __pycache__/
 .vscode/
-post-index.csv
