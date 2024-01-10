@@ -7,8 +7,6 @@ def index(args: Arguments):
 	attributes = PostAttribute(args.file)
 	idx = index.find(args.file)
 	changed: bool
-	index[idx].title = attributes.title
-	index[idx].tags = attributes.tags
 	if idx == -1:
 		index.append(
 			IndexEntry(
@@ -22,6 +20,8 @@ def index(args: Arguments):
 		)
 		changed = True
 	else:
+		index[idx].title = attributes.title
+		index[idx].tags = attributes.tags
 		changed = (index[idx].title != attributes.title) or (
 			index[idx].tags != attributes.tags
 		)
