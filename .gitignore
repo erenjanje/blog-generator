@@ -4,3 +4,5 @@ __pycache__/**
 .vscode/
 post-index.csv
 attributes.index
+blog.code-workspace
+vimsession.vim
