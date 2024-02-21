@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>$#title#$</title>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" href="/pandoc.css"/>
-        <link rel="stylesheet" href="/main.css"/>
-    </head>
-    <body>
-        <!--
+
+<head>
+    <title>$#title#$</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/pandoc.css" />
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!--
         <nav>
             <menu-item>
                 <input type='checkbox' id='file-checker' class='menu-checker'/>
@@ -35,32 +41,33 @@
             </menu-item>
         </nav>
         -->
-        <div id='panels'>
-            <div id='page'>
-                <div id="content">
-                    <h1>$#title#$</h1>
-                    <hr/>
-                    $#content#$
-                </div>
-                <hr/>
-                <footer>
-                    $#date#$
-                    <label-list>
-                        $#taglist#$
-                    </label-list>
-                </footer>
+    <div id='panels'>
+        <div id='page'>
+            <div id="content">
+                <h1>$#title#$</h1>
+                <hr />
+                $#content#$
             </div>
-            <div id='labels'>
-                <post-list>
+            <hr />
+            <footer>
+                $#date#$
+                <label-list>
+                    $#taglist#$
+                </label-list>
+            </footer>
+        </div>
+        <div id='labels'>
+            <post-list>
                 <h2>Gönderiler</h2>
                 <a href='/' class="sidebar-link">Ana Sayfa</a>
                 $#posts#$
-                </post-list>
-                <sidebar-label-list>
+            </post-list>
+            <sidebar-label-list>
                 <h2>Etiketler</h2>
                 $#tags#$
                 </label-list>
-            </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
