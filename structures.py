@@ -114,7 +114,7 @@ class TagTree:
 		for tag in tags:
 			ret.append(f'<details><summary class="{"current-tag" if tag in current_tags else ""}">({len(self.tree[tag])}) {tag}</summary><sidebar-link-container>')
 			for (file, title) in self.tree[tag]:
-				ret.append(f'<a href="/{'/'.join(Path(file).parts[:-1])}" class="sidebar-link">- {title}</a>')
+				ret.append(f'''<a href="/{'/'.join(Path(file).parts[:-1])}" class="sidebar-link">- {title}</a>''')
 			ret.append('</sidebar-link-container></details>\n')
 		return ''.join(ret)
 
@@ -130,5 +130,5 @@ class Arguments:
 
 def set_locale(new_loc = None):
 	loc = locale.getlocale()
-	locale.setlocale(locale.LC_ALL, 'tr_TR' if new_loc is None else new_loc)
+	locale.setlocale(locale.LC_ALL, 'tr_TR.utf8' if new_loc is None else new_loc)
 	return loc

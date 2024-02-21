@@ -44,11 +44,6 @@ def create_post_html_year(post_tree: list[tuple[str, list[tuple[str, list[tuple[
 def create_post_tag(tag) -> str:
 	return f'<details><summary>{tag}</summary></details>'
 
-def set_locale(new_loc = None):
-	loc = locale.getlocale()
-	locale.setlocale(locale.LC_ALL, 'tr_TR' if new_loc is None else new_loc)
-	return loc
-
 
 def get_content(file: Path) -> str:
 	pandoc = sp.run(['pandoc', '--mathml', file], capture_output=True)

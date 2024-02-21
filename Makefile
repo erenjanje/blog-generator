@@ -1,5 +1,6 @@
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 
+RM=rm -f
 POSTDIR=posts
 SITEDIR=site
 POSTEXT=md
@@ -49,4 +50,7 @@ $(SITEDIR)/%.html: %.$(POSTEXT) post-index.csv template.html post.py structures.
 	@echo COMPILE $<
 
 $(SITEDIR)/%.png: %.png
-	copy $(subst /,\,$<) $(subst /,\,$@)
+	copy $< $@
+
+clean:
+	@$(RM) $(INDICES)
