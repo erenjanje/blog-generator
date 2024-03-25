@@ -34,23 +34,23 @@ test:
 .PHONY: test
 
 post-index.csv: $(INDICES) merge.py structures.py
-	@python merge.py $(INDICES)
 	@echo MERGE
+	@python merge.py $(INDICES)
 
 %attributes.index: %index.$(POSTEXT) index.py structures.py
-	@python index.py $< $@
 	@echo INDEX $<
+	@python index.py $< $@
 
 attributes.index: index.$(POSTEXT) index.py structures.py
-	@python index.py $< $@
 	@echo INDEX $<
+	@python index.py $< $@
 
 $(SITEDIR)/%.html: %.$(POSTEXT) post-index.csv template.html post.py structures.py
-	@python post.py $< $@
 	@echo COMPILE $<
+	@python post.py $< $@
 
 $(SITEDIR)/%.png: %.png
-	copy $< $@
+	@cp $< $@
 
 clean:
 	@$(RM) $(INDICES)

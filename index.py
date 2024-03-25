@@ -24,7 +24,7 @@ def index(args: Arguments):
 			index[idx].tags != attributes.tags
 		)
 		index[idx].title = attributes.title
-		index[idx].tags = attributes.tags
+		index[idx].tags = sorted(attributes.tags, key=locale.strxfrm)
 	if changed:
 		index.save()
 

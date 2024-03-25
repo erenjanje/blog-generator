@@ -10,16 +10,31 @@ INDEX_FILE = Path('post-index.csv')
 def create_post_html_name(year: str, month: str, post_tree: list[tuple[str,str]]) -> str:
 	ret = []
 	for (name, title) in post_tree:
-		ret.append(f'<a href="/posts/{year}/{month}/{name}" class="sidebar-link">- {title}</a>')
+		ret.append(f'<a href="/posts/{year}/{month}/{name}" class="sidebar-link">&numsp;&numsp;⊡ {title}</a>')
 	return '<br/>\n'.join(ret)
+
+MONTH_NAMES = {
+	'01': 'Ocak',
+	'02': 'Şubat',
+	'03': 'Mart',
+	'04': 'Nisan',
+	'05': 'Mayıs',
+	'06': 'Haziran',
+	'07': 'Temmuz',
+	'08': 'Ağustos',
+	'09': 'Eylül',
+	'10': 'Ekim',
+	'11': 'Kasım',
+	'12': 'Aralık',
+}
 
 def create_post_html_month(year: str, post_tree: list[tuple[str, list[tuple[str,str]]]], post_time: tuple[str,str]) -> str:
 	ret = []
 	for (month, tree) in post_tree:
 		ret.append(
 			f'''
-			<details {'open="open"' if post_time[1] == month else ''}>
-				<summary>{month}</summary>
+			<details {'open="open"' if post_time[1] == month else ''} class="collapsable-details">
+				<summary class="collapsable-summary">{MONTH_NAMES[month]}</summary>
 					<sidebar-link-container>
 					{create_post_html_name(year, month, tree)}
 					</sidebar-link-container>
@@ -33,16 +48,13 @@ def create_post_html_year(post_tree: list[tuple[str, list[tuple[str, list[tuple[
 	for (year, tree) in post_tree:
 		ret.append(
 			f'''
-			<details {'open="open"' if post_time[0] == year else ''}>
-				<summary>{year}</summary>
+			<details {'open="open"' if post_time[0] == year else ''} class="collapsable-details">
+				<summary class="collapsable-summary">{year}</summary>
 				{create_post_html_month(year, tree, post_time)}
 			</details>
 			'''
 		)
 	return '\n'.join(ret)
-
-def create_post_tag(tag) -> str:
-	return f'<details><summary>{tag}</summary></details>'
 
 
 def get_content(file: Path) -> str:
@@ -57,17 +69,17 @@ def get_template() -> str:
 	return template
 
 def fill_template(template: str, creation_date: str, date: struct_time, content: str, title: str, sidebar: str, tags: TagTree, ourtags: list[str]) -> str:
-	datestr = '<div class="time-container"><h3>Oluşturulma Zamanı</h3><p>' + \
-		creation_date.replace('\\', '<br/>') + \
-		'</p></div>' + \
-		strftime(r'<div class="time-container"><h3>Değiştirilme Zamanı</h3><p>%Y-%m-%d<br/>%H:%M:%S<br/>UTC%z</p></div>', date)
+	datestr = '<div class="time-container"><h3>Gönderi Zamanı:</h3>' + \
+		creation_date.replace('\\', '\n') + \
+		'</div>'
+		# + strftime(r'<div class="time-container"><h3>Değiştirilme Zamanı</h3><p>%Y-%m-%d %H:%M:%S UTC%z</div>', date)
 	return template \
 			.replace('$#content#$', content) \
 			.replace('$#title#$', title) \
 			.replace('$#date#$', datestr) \
 			.replace('$#posts#$', sidebar) \
 			.replace('$#tags#$', tags.html(ourtags)) \
-			.replace('$#taglist#$', '<h3>Etiketler</h3>' + '<br/>\n'.join(map(lambda t: '- ' + t, ourtags)))
+			.replace('$#taglist#$', '<h3>Etiketler:</h3>' + ', \n'.join(map(lambda t: '' + t, sorted(ourtags, key=locale.strxfrm))))
 
 def get_post_time(file: Path) -> Optional[tuple[str,str]]:
 	if file.parts[0] != 'posts':

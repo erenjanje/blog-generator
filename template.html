@@ -4,70 +4,41 @@
 <head>
     <title>$#title#$</title>
     <meta charset="utf-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" />
     <link rel="stylesheet" href="/pandoc.css" />
     <link rel="stylesheet" href="/main.css" />
 </head>
 
 <body>
     <script>0</script>
-    <!--
-        <nav>
-            <menu-item>
-                <input type='checkbox' id='file-checker' class='menu-checker'/>
-                <label id='file-label' for='file-checker' class='menu-label'>Dosya</label>
-                <menu>
-                    <menu-option>
-                        <a href='/'>Ana Sayfa</a> 
-                    </menu-option>
-                    <menu-option>
-                        <a href='/posts'>Gönderiler</a>
-                    </menu-option>
-                </menu>
-            </menu-item>
-            <menu-item>
-                <input type='checkbox' id='apps-checker' class='menu-checker'/>
-                <label id='apps-label' for='apps-checker' class='menu-label'>Uygulamalar</label>
-                <menu>
-                    <menu-option has-seperator>
-                        <a href='/apps/webgl-raytracer'>WebGL Işın İzleyici</a>
-                    </menu-option>
-                    <menu-option>
-                        <a href='/apps/rpl-calculator'>Hesap Makinesi</a>
-                    </menu-option>
-                </menu>
-            </menu-item>
-        </nav>
-        -->
-    <div id='panels'>
-        <div id='page'>
-            <div id="content">
-                <h1>$#title#$</h1>
-                <hr />
-                $#content#$
-            </div>
+    <div id='page'>
+        <div id="content">
+            <h1>$#title#$</h1>
             <hr />
-            <footer>
-                $#date#$
-                <label-list>
-                    $#taglist#$
-                </label-list>
-            </footer>
+            $#content#$
         </div>
-        <div id='labels'>
-            <post-list>
-                <h2>Gönderiler</h2>
-                <a href='/' class="sidebar-link">Ana Sayfa</a>
-                $#posts#$
-            </post-list>
-            <sidebar-label-list>
-                <h2>Etiketler</h2>
-                $#tags#$
-                </label-list>
-        </div>
+        <hr />
+        <footer>
+            $#date#$
+            <label-list>
+                $#taglist#$
+            </label-list>
+            <div id='labels'>
+                <post-list class='all-list item'>
+                    <h2 class='list-header'>Gönderiler</h2>
+                    <a href='/' class="sidebar-link">Ana Sayfa</a>
+                    $#posts#$
+                </post-list>
+                <all-labels-list class='all-list item'>
+                    <h2 class='list-header' title="Renkli etiketler, mevcut gönderinin sahip olduğu etiketlerdir">
+                        Etiketler</h2>
+                    $#tags#$
+                </all-labels-list>
+            </div>
+        </footer>
     </div>
 </body>
 
