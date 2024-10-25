@@ -64,7 +64,7 @@ class PostIndex:
         self.file = index_file
 
     def find(self, file: Path) -> int:
-        file_str = str(file)
+        file_str = file.as_posix()
         for i, entry in enumerate(self.index):
             if entry.file == file_str:
                 return i

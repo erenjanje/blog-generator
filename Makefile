@@ -6,6 +6,21 @@ SITEDIR=site
 POSTEXT=md
 COMMIT=
 
+EMPTY :=
+BACKSLASH := \$(EMPTY)
+
+ifeq ($(OS),Windows_NT)
+
+copy := copy
+backslashize = $(subst /,$(BACKSLASH),$1)
+
+else
+
+copy := cp
+backslashize = $1
+
+endif
+
 POSTS=$(call rwildcard,,*.$(POSTEXT))
 OUTS=$(POSTS:%.$(POSTEXT)=$(SITEDIR)/%.html)
 INDICES=$(POSTS:%index.$(POSTEXT)=%attributes.index)
@@ -50,7 +65,7 @@ $(SITEDIR)/%.html: %.$(POSTEXT) post-index.csv template.html post.py structures.
 	@python post.py $< $@
 
 $(SITEDIR)/%.png: %.png
-	@cp $< $@
+	@$(copy) $(call backslashize,$<) $(call backslashize,$@)
 
 clean:
 	@$(RM) $(INDICES)
