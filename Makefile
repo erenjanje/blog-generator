@@ -25,14 +25,7 @@ POSTS=$(call rwildcard,,*.$(POSTEXT))
 OUTS=$(POSTS:%.$(POSTEXT)=$(SITEDIR)/%.html)
 INDICES=$(POSTS:%index.$(POSTEXT)=%attributes.index)
 
-PNGIN=$(filter-out site/%,$(call rwildcard,,*.png))
-PNGS=$(PNGIN:%.png=$(SITEDIR)/%.png)
-JPGIN=$(filter-out site/%,$(call rwildcard,,*.jpg))
-JPGS=$(JPGIN:%.jpg=$(SITEDIR)/%.jpg)
-IMAGEIN=$(PNGIN) $(JPGIN)
-IMAGES=$(PNGS) $(JPGS)
-
-build: $(OUTS) $(IMAGES)
+build: $(OUTS)
 .PHONY: build
 
 upload: build
